@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-client_id"
+    content="390501756106-ua4a2592vlq65t5i8g5ou5uglinmni3i.apps.googleusercontent.com">
+  <title>From Space With More Love</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+  <link rel="stylesheet" href="./css/main.css">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+  <!-- Google Login -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body class="animation-body-before-login">
+  <div id="before-login">
+    <div id="container">
+      <div class="g-signin2" data-onsuccess="onSignIn" id="login"></div>
+      <img src="./img/click.png" alt="" srcset="" style="width: 350px; height: 125px; margin-left: 53px;" id="click-here"
+        class="animated flash infinite">
+    </div>
+  </div>
+
+  <div id="after-login">
+
+    <div id="content">
+
+
+    <div class="container" id="after-login-container">
+      <div class="row py-3">
+        <div class="col-3">
+          <div id="date-col" style="padding: 1rem;">
+            <form id="input-date-form">
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between;">
+                  <h2><label for="input-date"><i class="far fa-calendar-alt"></i> Date</label></h2> 
+                  <h2 style="color: rgb(221, 53, 53);"><a href="" onclick="signOut();" id="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
+                </div>
+                <input type="text" class="form-control" id="input-date" size="30" aria-describedby="emailHelp"
+                  placeholder="yyyy-mm-dd" autocomplete="off">
+              </div>
+              <button type="submit" class="btn btn-outline-dark btn-block" id="input-date-submit">Submit</button>
+              <button class="btn btn-outline-dark btn-block" id="input-date-loading" type="button" style="display: none;" disabled>
+                <span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+            </form>
+          </div>
+
+        </div>
+          <div class="col-9" id="main-content-col">
+              <div id="started">
+                <img id="image" src="./img/background-right.svg" alt="" srcset="" style="width: 70%;">
+              </div>
+              <div id="loading" style="display: flex; justify-content: center;">
+                <img src="./img/Pacman.gif" alt="" style="width: 300px;">
+              </div>
+            <h1 id="nasa-title" style="text-align: center; margin-top: 15px; margin-bottom: 15px"></h1>
+            <div class="card" style="width: 100%;">
+              <img class="card-img-top" src="" id="nasa-image"
+                alt="Nasa Image" style="display: none;">
+                <div id="iframe-special" style="display: flex; justify-content: center; border: 0;"></div>
+                <div id="special-row"></div>
+
+              <div class="card-body">
+                  <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nasa-description" role="tab" aria-controls="nasa-description" aria-selected="true">English</a>
+                        <a class="nav-item nav-link" id="nav-id-tab" data-toggle="tab" href="#description-id" role="tab" aria-controls="description-id" aria-selected="false">Indonesia</a>
+                        <a class="nav-item nav-link" id="nav-su-tab" data-toggle="tab" href="#description-su" role="tab" aria-controls="description-su" aria-selected="false">Sundanese</a>
+                        <a class="nav-item nav-link" id="nav-jv-tab" data-toggle="tab" href="#description-jv" role="tab" aria-controls="description-jv" aria-selected="false">Javanese</a>
+                        <a class="nav-item nav-link" id="nav-ms-tab" data-toggle="tab" href="#description-ms" role="tab" aria-controls="description-ms" aria-selected="false">Malay</a>
+                      </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="nasa-description" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-english"></p></div>
+                      <div class="tab-pane fade" id="description-id" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-ina"></p></div>
+                      <div class="tab-pane fade" id="description-su" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-sunda"></p></div>
+                      <div class="tab-pane fade" id="description-jv" role="tabpanel" aria-labelledby="nav-contact-tab"><p id="desc-java"></p></div>
+                      <div class="tab-pane fade" id="description-ms" role="tabpanel" aria-labelledby="nav-contact-tab"><p id="desc-malay"></p></div>
+                    </div>
+                <p class="card-text" id="nasa-description"></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="list-tag"></li>
+              </ul>
+              <!-- <div class="card-body">
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+              </div> -->
+            </div>
+          </div>
+    </div>
+
+    <!-- Youtube Modal -->
+    <div class="modal fade" id="youtubeModal" tabindex="-1" role="dialog" aria-labelledby="youtubeModalLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-dark" >
+            <h5 class="modal-title text-justify text-light" id="youtubeModalLabel">New message</h5>
+            <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body d-flex flex-column align-items-center justify-content-center">
+            
+          </div>
+          <div class="modal-footer bg-dark">
+            <h3 class="mr-3 text-light"><span style="height:0;"><i class="fab fa-youtube "> </i></span><a  target="_blank" id="channel-name" class="text-light"> Visit channel</a></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Sweet Alert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/user.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+* {
+  /* color: rgb(241, 241, 241); */
+}
+
+.animation-body-before-login {
+  animation: change-color 3s;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-home-page.jpg);
+  background-size: cover;
+}
+
+.animation-body-after-login {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-main.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+
+#before-login {
+  animation: hide-google-button 10s;
+}
+
+@keyframes change-color {
+  0% {
+    background-image: none;
+    background-color: white;
+  }
+  15% {
+    background-color: white;
+  }
+  100% {
+    background-image: none;
+    background-color: black;
+  }
+}
+
+@keyframes hide-google-button {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) linear;
+  }
+}
+
+@keyframes custom-animation {
+  0% {
+    background-image: none;
+  }
+  10% {
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96)), url(../img/background-space-home-page.jpg); */
+  }
+  25% {
+    background-image: none;
+
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(../img/background-space-home-page.jpg); */
+  }
+  50% {
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url(../img/background-space-home-page.jpg);
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../img/background-space-home-page.jpg); */
+  }
+  100% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-home-page.jpg);
+  }
+}
+
+#after-login .container {
+  border-radius: 5px;
+}
+
+#main-content-col {
+  border-radius: 5px;
+  background-color: white;
+}
+
+#date-col {
+  background-color: white;
+  border-radius: 5px;
+}
+#after-login-container {
+  width: 100% !important;
+}
+
+#after-login {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
+
+.abcRioButton.abcRioButtonLightBlue{
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50%;
+}
+
+.abcRioButtonIconImage.abcRioButtonIconImage18{
+  width: 360px !important;
+}
+
+.abcRioButtonSvg{
+  width:255px;
+  height:255px;
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
+
+#container{
+  width: 300px;
+  /* border: 1px solid gray; */
+  /* background-color: rgba(253, 247, 247, 0.739); */
+  height: 200px;
+  margin: 30vh auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#list-tag{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.get-youtube{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: grey;
+}
+
+.card{
+  margin-bottom: 15px;
+}
+
+#started{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  opacity: 0.7;
+}
+
+
+/* Youtube Modal */
+.modal-dialog {
+  min-height: 75vh;
+}
+
+.modal-body, .modal-footer, .modal-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/modal-bg.jpg);
+  background-size: cover;
+}
+
+.fa-youtube {
+  color:#FF0100;
+}
+
+#channel-name {
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.close:hover {
+  style: none;
+}
+
+
+.tab-pane p{
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  text-align: justify;
+}
+
+#logout {
+  color: rgb(58, 58, 58);
+}
+
+#logout:hover {
+  color: black;
+}
+
+/* End */
