@@ -1,3 +1,47 @@
+const NASA_API_KEY = "4JrKq7hhcwlzRCAvCzp63veGMEF8Fe5GO2kWlnwW";
+var YOUTUBE_API_KEY = "AIzaSyDKExSK10S6zXndFEZ86JHiNTdVPl7D0xk"
+
+$(document).ready(function() {
+  console.log("ready!");
+  
+  $("#input-date").datepicker();
+  $("#input-date").datepicker("option", "dateFormat", "yy-mm-dd");
+  
+  $('#login').hover(
+    function(){ $(this).addClass('animated heartBeat') },
+    function(){ $(this).removeClass('animated heartBeat') }
+  )
+
+  $("#youtubeModal").on("hidden.bs.modal", function () {
+    $(".modal-body").empty();
+    $("#channel-name").attr("href", '');
+  });
+
+  $("#input-date-form").submit(getNasaData);
+
+  $(".card").hide()
+  $("#started").show() 
+})
+
+$(document).on("click", ".get-youtube", function() {
+  event.preventDefault();
+  $.ajax({
+    method: 'GET',
+    url: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=space%20${$(this).attr("name")}%20explanation&type=video&maxResults=1&chart=mostPopular&key=${YOUTUBE_API_KEY}`,
+  })
+    .done((res) => {
+      console.log(res)
+      $(".modal-body").html(`
+      <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/${res.items[0].id.videoId}" allowfullscreen></iframe>
+      `);
+      $("#youtubeModalLabel").text(`${res.items[0].snippet.title}`);
+      $("#channel-name").attr("href", `https://www.youtube.com/channel/${res.items[0].snippet.channelId}`)
+    })
+    .fail((jqXHR, textStatus) => {
+      console.log(textStatus);
+    })
+})
+
 if(!localStorage.getItem('token')){
   $('#after-login').hide()
   $('#before-login').show()
@@ -6,13 +50,9 @@ if(!localStorage.getItem('token')){
   $('#before-login').hide()
 }
 
-const NASA_API_KEY = "4JrKq7hhcwlzRCAvCzp63veGMEF8Fe5GO2kWlnwW";
-
 function getNasaData(e) {
   e.preventDefault();
-  // $("#nasa-image").css("display", "none");
     $("#nasa-image").fadeIn();
-
 
   $(".input-date-button").toggle();
   const selectedDate = $("#input-date").val();
@@ -24,6 +64,7 @@ function getNasaData(e) {
     url: `http://35.198.237.181/nasa`,
   })
     .done(({data}) => {
+      $("#list-tag").empty();
       $(".card").show()
       $("#started").hide()
       $(".input-date-button").toggle();
@@ -33,9 +74,8 @@ function getNasaData(e) {
       $("#nasa-image").fadeIn("slow");
       for (tag of data.tags) {
       $("#list-tag").append(`
-        <span type="button" class="get-youtube" data-toggle="modal" data-target="#youtubeModal" name="${tag}">${tag}</span>`)
+        <span class="get-youtube btn btn-dark mx-1 my-2 py-1 px-2 text-light" data-toggle="modal" data-target="#youtubeModal" name="${tag}">${tag}</span>`)
       }
-      // $("#nasa-image").attr("src", response.hdurl)
     })
     .fail((jqXHR, textStatus) => {
       console.log(textStatus);
@@ -44,20 +84,3 @@ function getNasaData(e) {
     })
 }
 
-$(document).ready(function() {
-  console.log("ready!");
-  
-  
-  $("#input-date").datepicker();
-  $("#input-date").datepicker("option", "dateFormat", "yy-mm-dd");
-  
-  $('#login').hover(
-    function(){ $(this).addClass('animated heartBeat') },
-    function(){ $(this).removeClass('animated heartBeat') }
-  )
-
-  $("#input-date-form").submit(getNasaData);
-
-  $(".card").hide()
-  $("#started").show() 
-})
