@@ -1,0 +1,31 @@
+* {
+  /* color: rgb(241, 241, 241); */
+}
+
+body {
+  /* background-color: red; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-main.jpg);
+  background-size: cover;
+}
+
+#after-login .container {
+  border-radius: 5px;
+}
+
+#main-content-col {
+  border-radius: 5px;
+  background-color: white;
+}
+
+#date-col {
+  background-color: white;
+  border-radius: 5px;
+}
+#after-login-container {
+  width: 100% !important;
+}
+
+#after-login {
+  margin-top: 4vh;
+  margin-bottom: 4vh;
+}
