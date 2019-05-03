@@ -11,23 +11,30 @@ const NASA_API_KEY = "4JrKq7hhcwlzRCAvCzp63veGMEF8Fe5GO2kWlnwW";
 function getNasaData(e) {
   e.preventDefault();
   // $("#nasa-image").css("display", "none");
-  $("#nasa-image").fadeIn();
+    $("#nasa-image").fadeIn();
 
 
   $(".input-date-button").toggle();
   const selectedDate = $("#input-date").val();
   $.ajax({
-    method: "GET",
-    url: `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${selectedDate}`,
+    method: "POST",
+    data: {
+      date: selectedDate
+    },
+    url: `http://35.198.237.181/nasa`,
   })
-    .done((response) => {
-      console.log(response);
-
+    .done(({data}) => {
+      $(".card").show()
+      $("#started").hide()
       $(".input-date-button").toggle();
-      $("#nasa-title").text(response.title);
-      $("#nasa-description").text(response.explanation);
-      $("#nasa-image").attr("src", response.url);
+      $("#nasa-title").text(data.title);
+      $("#nasa-description").text(data.explanation);
+      $("#nasa-image").attr("src", data.url);
       $("#nasa-image").fadeIn("slow");
+      for (tag of data.tags) {
+      $("#list-tag").append(`
+        <span type="button" class="get-youtube" data-toggle="modal" data-target="#youtubeModal" name="${tag}">${tag}</span>`)
+      }
       // $("#nasa-image").attr("src", response.hdurl)
     })
     .fail((jqXHR, textStatus) => {
@@ -39,7 +46,8 @@ function getNasaData(e) {
 
 $(document).ready(function() {
   console.log("ready!");
-
+  
+  
   $("#input-date").datepicker();
   $("#input-date").datepicker("option", "dateFormat", "yy-mm-dd");
   
@@ -49,4 +57,7 @@ $(document).ready(function() {
   )
 
   $("#input-date-form").submit(getNasaData);
+
+  $(".card").hide()
+  $("#started").show() 
 })

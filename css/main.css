@@ -113,3 +113,25 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#list-tag{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.get-youtube{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+}
+
+.card{
+  margin-bottom: 15px;
+}
+
+#started{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+  opacity: 0.7;
+}
