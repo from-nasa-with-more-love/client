@@ -3,9 +3,63 @@
 }
 
 body {
-  /* background-color: red; */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-main.jpg);
+  animation: change-color 3s;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-home-page.jpg);
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-main.jpg); */
   background-size: cover;
+}
+
+#before-login {
+  animation: hide-google-button 10s;
+}
+
+@keyframes change-color {
+  0% {
+    background-image: none;
+    background-color: white;
+  }
+  15% {
+    background-color: white;
+  }
+  100% {
+    background-image: none;
+    background-color: black;
+  }
+}
+
+@keyframes hide-google-button {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) linear;
+  }
+}
+
+@keyframes custom-animation {
+  0% {
+    background-image: none;
+  }
+  10% {
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.96)), url(../img/background-space-home-page.jpg); */
+  }
+  25% {
+    background-image: none;
+
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(../img/background-space-home-page.jpg); */
+  }
+  50% {
+    background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url(../img/background-space-home-page.jpg);
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(../img/background-space-home-page.jpg); */
+  }
+  100% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/background-space-home-page.jpg);
+  }
 }
 
 #after-login .container {
@@ -31,18 +85,20 @@ body {
 }
 
 .abcRioButton.abcRioButtonLightBlue{
-  width: 100px !important;
-  height: 100px !important;
-  border-radius: 10px;
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50%;
 }
 
 .abcRioButtonIconImage.abcRioButtonIconImage18{
-  width: 120px !important;
+  width: 360px !important;
 }
 
 .abcRioButtonSvg{
-  width:85px;
-  height:85px;
+  width:255px;
+  height:255px;
+  padding-left: 2rem;
+  padding-top: 2rem;
 }
 
 #container{
