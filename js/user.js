@@ -8,6 +8,8 @@ function onSignIn(googleUser) {
       }
     })
       .done((response) => {
+        $("body").removeClass("animation-body-before-login");
+        $("body").addClass("animation-body-after-login");
         localStorage.setItem('token', response)
         $('#before-login').hide()
         $('#after-login').show()
@@ -19,6 +21,9 @@ function onSignIn(googleUser) {
 
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
+    $("body").removeClass("animation-body-after-login");
+    $("body").addClass("animation-body-before-login");
+
     auth2.signOut().then(function () {
       localStorage.removeItem('token')
       $('#before-login').show()

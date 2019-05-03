@@ -69,7 +69,11 @@ function getNasaData(e) {
       $("#started").hide()
       $(".input-date-button").toggle();
       $("#nasa-title").text(data.title);
-      $("#nasa-description").text(data.explanation);
+      $("#desc-english").text(data.explanation);
+      $("#desc-ina").text(data.translated.id);
+      $("#desc-sunda").text(data.translated.su);
+      $("#desc-java").text(data.translated.jv);
+      $("#desc-malay").text(data.translated.ms);
       $("#nasa-image").attr("src", data.url);
       $("#nasa-image").fadeIn("slow");
       for (tag of data.tags) {
@@ -84,3 +88,19 @@ function getNasaData(e) {
     })
 }
 
+$(document).ready(function() {
+  console.log("ready!");
+  
+  $("#input-date").datepicker();
+  $("#input-date").datepicker("option", "dateFormat", "yy-mm-dd");
+  
+  $('#login').hover(
+    function(){ $(this).addClass('animated heartBeat') },
+    function(){ $(this).removeClass('animated heartBeat') }
+  )
+
+  $("#input-date-form").submit(getNasaData);
+
+  $(".card").hide()
+  $("#started").show() 
+})

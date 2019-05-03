@@ -9,6 +9,9 @@
     content="390501756106-ua4a2592vlq65t5i8g5ou5uglinmni3i.apps.googleusercontent.com">
   <title>From Space With More Love</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -26,7 +29,7 @@
   <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
-<body>
+<body class="animation-body-before-login">
   <div id="before-login">
     <div id="container">
       <div class="g-signin2" data-onsuccess="onSignIn" id="login"></div>
@@ -46,7 +49,10 @@
           <div id="date-col" style="padding: 1rem;">
             <form id="input-date-form">
               <div class="form-group">
-                <h2><label for="input-date"><i class="far fa-calendar-alt"></i> Date</label></h2>
+                <div style="display: flex; justify-content: space-between;">
+                  <h2><label for="input-date"><i class="far fa-calendar-alt"></i> Date</label></h2> 
+                  <h2 style="color: rgb(221, 53, 53);"><a href="" onclick="signOut();" id="logout"><i class="fas fa-sign-out-alt"></i></a></h2>
+                </div>
                 <input type="text" class="form-control" id="input-date" size="30" aria-describedby="emailHelp"
                   placeholder="yyyy-mm-dd" autocomplete="off">
               </div>
@@ -55,7 +61,6 @@
                 <span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span>
                 Loading...
               </button>
-              <a href="#" onclick="signOut();" id="logout">Sign out</a>
             </form>
           </div>
 
@@ -69,6 +74,22 @@
               <img class="card-img-top" src="" id="nasa-image"
                 alt="Nasa Image" style="display: none;">
               <div class="card-body">
+                  <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nasa-description" role="tab" aria-controls="nasa-description" aria-selected="true">English</a>
+                        <a class="nav-item nav-link" id="nav-id-tab" data-toggle="tab" href="#description-id" role="tab" aria-controls="description-id" aria-selected="false">Indonesia</a>
+                        <a class="nav-item nav-link" id="nav-su-tab" data-toggle="tab" href="#description-su" role="tab" aria-controls="description-su" aria-selected="false">Sundanese</a>
+                        <a class="nav-item nav-link" id="nav-jv-tab" data-toggle="tab" href="#description-jv" role="tab" aria-controls="description-jv" aria-selected="false">Javanese</a>
+                        <a class="nav-item nav-link" id="nav-ms-tab" data-toggle="tab" href="#description-ms" role="tab" aria-controls="description-ms" aria-selected="false">Malay</a>
+                      </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="nasa-description" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-english"></p></div>
+                      <div class="tab-pane fade" id="description-id" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-ina"></p></div>
+                      <div class="tab-pane fade" id="description-su" role="tabpanel" aria-labelledby="nav-profile-tab"><p id="desc-sunda"></p></div>
+                      <div class="tab-pane fade" id="description-jv" role="tabpanel" aria-labelledby="nav-contact-tab"><p id="desc-java"></p></div>
+                      <div class="tab-pane fade" id="description-ms" role="tabpanel" aria-labelledby="nav-contact-tab"><p id="desc-malay"></p></div>
+                    </div>
                 <p class="card-text" id="nasa-description"></p>
               </div>
               <ul class="list-group list-group-flush">
