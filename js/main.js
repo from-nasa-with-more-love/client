@@ -1,5 +1,5 @@
 const NASA_API_KEY = "4JrKq7hhcwlzRCAvCzp63veGMEF8Fe5GO2kWlnwW";
-var YOUTUBE_API_KEY = "AIzaSyDKExSK10S6zXndFEZ86JHiNTdVPl7D0xk"
+var YOUTUBE_API_KEY = "AIzaSyDh8civnPSFj1qs9NNQ4vE_6pP9KmksleI"
 
 $(document).ready(function() {
   console.log("ready!");
@@ -52,9 +52,17 @@ if(!localStorage.getItem('token')){
 
 function getNasaData(e) {
   e.preventDefault();
-    $("#nasa-image").fadeIn();
+    // $("#nasa-image").fadeIn();
+    $("#nasa-image").css("display", "none");
+    $("#iframe-special").hide()
+    $("#nasa-title").hide()
+    $(".card").hide()
+  $("#loading").show() 
+  $("#started").hide()
 
-  $(".input-date-button").toggle();
+
+  $("#input-date-submit").css("display", "none");
+  $("#input-date-loading").css("display", "block");
   const selectedDate = $("#input-date").val();
   $.ajax({
     method: "POST",
@@ -65,9 +73,11 @@ function getNasaData(e) {
   })
     .done(({data}) => {
       $("#list-tag").empty();
+      $("#nasa-title").show()
       $(".card").show()
-      $("#started").hide()
-      $(".input-date-button").toggle();
+      $("#loading").hide()
+      $("#input-date-submit").css("display", "block");
+      $("#input-date-loading").css("display", "none");
       $("#nasa-title").text(data.title);
       $("#desc-english").text(data.explanation);
       $("#desc-ina").text(data.translated.id);
@@ -80,12 +90,25 @@ function getNasaData(e) {
       $("#list-tag").append(`
         <span class="get-youtube btn btn-dark mx-1 my-2 py-1 px-2 text-light" data-toggle="modal" data-target="#youtubeModal" name="${tag}">${tag}</span>`)
       }
+
+      $("#special-row").empty()
+      if(data.special){
+        $("#special-row").append(`<button class="btn btn-dark btn-sm mt-3 ml-3 mb-1" onClick="loadIframe('${data.special}')">Special</button>`)
+      }
     })
     .fail((jqXHR, textStatus) => {
       console.log(textStatus);
       swal("Failed to get image. Try again later", "", "error");
       $(".input-date-button").toggle();
     })
+}
+
+function loadIframe(urlVideo){
+  $("#nasa-image").hide()
+  $("#iframe-special").show()
+  $("#iframe-special").html(`
+  <iframe class="embed-responsive-item" width="560" height="315" src="${urlVideo}" allowfullscreen></iframe>
+`);
 }
 
 $(document).ready(function() {
@@ -102,5 +125,6 @@ $(document).ready(function() {
   $("#input-date-form").submit(getNasaData);
 
   $(".card").hide()
-  $("#started").show() 
+  $("#started").show()
+  $("#loading").hide() 
 })
