@@ -2,7 +2,7 @@ function onSignIn(googleUser) {
     let id_token = googleUser.getAuthResponse().id_token;
     $.ajax({
       method: "POST",
-      url: `http://localhost:3000/users/googleLogin`,
+      url: `http://35.198.237.181/users/googleLogin`,
       data: {
         token: id_token
       }

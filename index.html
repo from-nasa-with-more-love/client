@@ -56,8 +56,8 @@
                 <input type="text" class="form-control" id="input-date" size="30" aria-describedby="emailHelp"
                   placeholder="yyyy-mm-dd" autocomplete="off">
               </div>
-              <button type="submit" class="btn btn-outline-dark btn-block input-date-button">Submit</button>
-              <button class="btn btn-outline-dark btn-block input-date-button" type="button" style="display: none;" disabled>
+              <button type="submit" class="btn btn-outline-dark btn-block" id="input-date-submit">Submit</button>
+              <button class="btn btn-outline-dark btn-block" id="input-date-loading" type="button" style="display: none;" disabled>
                 <span class="spinner-border spinner-border-sm " role="status" aria-hidden="true"></span>
                 Loading...
               </button>
@@ -69,10 +69,16 @@
               <div id="started">
                 <img id="image" src="./img/background-right.svg" alt="" srcset="" style="width: 70%;">
               </div>
+              <div id="loading" style="display: flex; justify-content: center;">
+                <img src="./img/Pacman.gif" alt="" style="width: 300px;">
+              </div>
             <h1 id="nasa-title" style="text-align: center; margin-top: 15px; margin-bottom: 15px"></h1>
             <div class="card" style="width: 100%;">
               <img class="card-img-top" src="" id="nasa-image"
                 alt="Nasa Image" style="display: none;">
+                <div id="iframe-special" style="display: flex; justify-content: center; border: 0;"></div>
+                <div id="special-row"></div>
+
               <div class="card-body">
                   <nav>
                       <div class="nav nav-tabs" id="nav-tab" role="tablist">
