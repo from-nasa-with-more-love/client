@@ -99,7 +99,10 @@ function getNasaData(e) {
     .fail((jqXHR, textStatus) => {
       console.log(textStatus);
       swal("Failed to get image. Try again later", "", "error");
-      $(".input-date-button").toggle();
+      $("#input-date-submit").css("display", "block");
+      $("#input-date-loading").css("display", "none");
+      $("#started").show()
+      $("#loading").hide() 
     })
 }
 
