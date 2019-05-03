@@ -29,3 +29,31 @@ body {
   margin-top: 4vh;
   margin-bottom: 4vh;
 }
+
+.abcRioButton.abcRioButtonLightBlue{
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 10px;
+}
+
+.abcRioButtonIconImage.abcRioButtonIconImage18{
+  width: 120px !important;
+}
+
+.abcRioButtonSvg{
+  width:85px;
+  height:85px;
+}
+
+#container{
+  width: 300px;
+  /* border: 1px solid gray; */
+  /* background-color: rgba(253, 247, 247, 0.739); */
+  height: 200px;
+  margin: 30vh auto;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

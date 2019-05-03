@@ -1,3 +1,11 @@
+if(!localStorage.getItem('token')){
+  $('#after-login').hide()
+  $('#before-login').show()
+}else{
+  $('#after-login').show()
+  $('#before-login').hide()
+}
+
 const NASA_API_KEY = "4JrKq7hhcwlzRCAvCzp63veGMEF8Fe5GO2kWlnwW";
 
 function getNasaData(e) {
@@ -35,5 +43,10 @@ $(document).ready(function() {
   $("#input-date").datepicker();
   $("#input-date").datepicker("option", "dateFormat", "yy-mm-dd");
   
+  $('#login').hover(
+    function(){ $(this).addClass('animated heartBeat') },
+    function(){ $(this).removeClass('animated heartBeat') }
+  )
+
   $("#input-date-form").submit(getNasaData);
 })
